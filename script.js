@@ -7,7 +7,7 @@
 /////////////////////////////////////////////////
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Dathan Metge',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -151,7 +151,7 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
+    labelWelcome.textContent = `Welcome back ${
       currentAccount.owner.split(' ')[0]
     }`;
     containerApp.style.opacity = 100;
@@ -232,3 +232,115 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
+
+console.log(new Array(1, 2, 3, 4, 5));
+
+const x = new Array(7);
+console.log(x);
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// arr.fill('zzz', 7, 10);
+// console.log(arr);
+
+const people = [
+  {
+    name: 'Dom',
+    age: 35,
+    occupation: 'web Developper',
+  },
+  {
+    name: 'Sarah',
+    age: 26,
+    occupation: 'Professionnal Hoe',
+  },
+  {
+    name: 'NTN',
+    age: 28,
+    occupation: 'Boss',
+  },
+];
+
+const old = people.filter(peepl => peepl.age > 30);
+console.log(old);
+
+const addition = people.map(peep => peep.age).reduce((acc, age) => acc + age);
+console.log(addition);
+
+const y = Array.from({ length: 7 }, () => 2, 3, 4);
+console.log(y);
+
+const z = Array.from({ length: 5 }, (cur, i) => i + 1);
+console.log(z);
+
+let diceRoll = Array.from({ length: 100 }, (_, i) =>
+  Math.floor(Math.random() * 6 + 1)
+);
+console.log(diceRoll);
+
+const body = document.querySelector('body');
+
+body.addEventListener('click', () => {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    li => li.textContent.replace('€', '$')
+  );
+  console.log(movementsUI);
+});
+
+// --------------------------------------------------------- Training --------------------------------------------------------------------
+
+console.log(accounts);
+
+const totalDeposits = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .filter(acc => acc > 0)
+  .reduce((a, b) => a + b);
+console.log(totalDeposits);
+
+// How many deposits with at least 1000$
+
+const totalDepositsSup1K = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .filter(acc => acc >= 1000);
+console.log(totalDepositsSup1K.length);
+
+// Create object with the sum of deposits and withdrawals
+
+let map = {};
+
+map.deposit = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .filter(acc => acc > 0)
+  .reduce((a, b) => a + b);
+
+map.withdrawals = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .filter(acc => acc < 0)
+  .reduce((a, b) => a + b);
+
+console.log(map);
+
+const stri = 'this is a nice title';
+const stri2 = 'and a happy new year';
+const exception = ['a', 'an', 'the', 'and', 'but', 'or', 'on', 'in', 'with'];
+const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+const converter = function (str) {
+  const strArray = str
+    .toLowerCase()
+    .split(' ')
+    .map(firstLetter =>
+      exception.includes(firstLetter[0])
+        ? firstLetter
+        : firstLetter[0].toUpperCase() + firstLetter.slice(1)
+    );
+
+  return capitalize(strArray.join(' '));
+};
+console.log(converter(stri));
+console.log(converter(stri2));
